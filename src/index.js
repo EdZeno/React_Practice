@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import PropTypes from 'prop-types';
 
 class AddFriend extends React.Component {
   constructor(props) {
@@ -37,6 +38,10 @@ class AddFriend extends React.Component {
   }
 }
 
+AddFriend.propTypes: {
+    addNew: PropTypes.func.isRequired
+}
+
 class ShowList extends React.Component {
   render() {
     return (
@@ -50,6 +55,10 @@ class ShowList extends React.Component {
       </div>
     )
   }
+}
+
+ShowList.defaultProps = {
+    names: []
 }
 
 class FriendsContainer extends React.Component {
