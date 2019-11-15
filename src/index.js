@@ -7,12 +7,25 @@ class HelloUser extends React.Component {
             this.state = {
                 userName: 'me'
             }
+            this.handleChange = this.handleChange.bind(this)
+    }
+    
+    handleChange(e) {
+        this.setState({
+            userName: e.target.value
+        })
     }
     
     render() {
         return (
             <div>
-            Hello {this.state.userName}
+            Hello {this.state.userName} <br />
+            Change name:
+            <input
+            type="text"
+            value={this.state.userName}
+            onChange={this.handleChange}
+            />
             </div>
             )
     }
