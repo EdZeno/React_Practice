@@ -1,34 +1,37 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 
-class HelloUser extends React.Component {
+class FriendContainer extends React.Component {
     constructor(props) {
-        super(props) 
-            this.state = {
-                userName: 'me'
-            }
-            this.handleChange = this.handleChange.bind(this)
-    }
-    
-    handleChange(e) {
-        this.setState({
-            userName: e.target.value
-        })
+        super(props)
+        this.state = {
+            name: "Tyler",
+            friends: ["John", "James", "Tom"]
+        }
     }
     
     render() {
-        return (
+        return(
             <div>
-            Hello {this.state.userName} <br />
-            Change name:
-            <input
-            type="text"
-            value={this.state.userName}
-            onChange={this.handleChange}
-            />
+            <h3> Name: {this.state.name} </h3>
+            <ShowList names={this.state.friends} />
             </div>
             )
     }
+    
+    class ShowList extends React.Component {
+        render() {
+            return(
+                <div>
+                <h3> Friends </h3>
+                <ul>
+                {this.props.names.map((friend) => <li>{friend}</li>)}
+                </ul>
+                </div>
+                )
+        }
+    }
+    
 }
 
-ReactDom.render(<HelloUser />, document.getElementById('root'))
+ReactDom.render(<FriendContainer />, document.getElementById('root'))
